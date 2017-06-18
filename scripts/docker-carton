@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if [ -f "$APP_WORK/lutim.env" ]; then
+	. "$APP_WORK/lutim.env"
+fi
+
+exec gosu "$APP_USER" carton "$@"
