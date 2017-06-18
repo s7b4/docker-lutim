@@ -18,7 +18,7 @@ if [ ! -f "$CONF_FILE" ]; then
 	sed -i -E "s|#proxy\s+=>.*,|proxy => 1,|" "$CONF_FILE"
 
 	sed -i -E "s|#contact\s+=>.*,|contact => 'docker[at]localhost.localdomain',|" "$CONF_FILE"
-	sed -i -E "s|secret\s+=>.*,|secret => '$(head -c1024 /dev/urandom | sha1sum | cut -d' ' -f1)',|" "$CONF_FILE"
+	sed -i -E "s|secrets\s+=>.*,|secrets => '$(head -c1024 /dev/urandom | sha1sum | cut -d' ' -f1)',|" "$CONF_FILE"
 	sed -i -E "s|#dbtype\s+=>.*,|dbtype => 'sqlite',|" "$CONF_FILE"
 	sed -i -E "s|#db_path\s+=>.*,|db_path => '$DB_FILE',|" "$CONF_FILE"
 

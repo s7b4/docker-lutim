@@ -43,7 +43,7 @@ RUN mkdir -p $APP_HOME $APP_WORK \
 	&& cd $APP_HOME \
 	&& carton install \
 	&& rm -rf "$APP_HOME/log" "$APP_HOME/t" \
-	&& rm -rvf "$HOME/.cpan"*
+	&& rm -rf "$HOME/.cpan"*
 
 WORKDIR $APP_HOME
 
