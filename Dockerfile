@@ -15,6 +15,7 @@ RUN groupadd -r "$APP_USER" --gid=999 \
 # Perl base
 RUN apt-get update \
 	&& apt-get install --no-install-recommends --yes \
+		procps \
 		make \
 		curl \
 		sqlite3 \

@@ -45,11 +45,16 @@ if [ ! -d "$FILE_FOLDER" ]; then
 	mkdir -v --mode=0700 "$FILE_FOLDER";
 fi
 
-# Crappy fix for writable theme / stats
+# Duplicate default theme
 if [ ! -d "$THEME_FOLDER" ]; then
 	mkdir -v --mode=0755 "$THEME_FOLDER"
 	echo "Copy default theme in $THEME_FOLDER/docker ..."
 	cp -rf "$APP_HOME/themes/default" "$THEME_FOLDER/docker"
+fi
+
+# Link custom theme
+if [ ! -e "$APP_HOME/themes/docker" ]; then
+	echo "Link to custom theme ..."
 	ln -sfv "$THEME_FOLDER/docker" "$APP_HOME/themes/docker"
 fi
 
