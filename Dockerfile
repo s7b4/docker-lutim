@@ -1,5 +1,5 @@
 FROM debian:stretch
-LABEL maintainer "s7b4 <baron.stephane@gmail.com>"
+LABEL maintainer="s7b4 <baron.stephane@gmail.com>"
 
 ENV APP_USER=lutim \
 	APP_TAG=configurable-storage-path \
@@ -38,8 +38,8 @@ RUN curl -o /usr/local/sbin/gosu -sSL "https://github.com/tianon/gosu/releases/d
 	&& chmod +x /usr/local/sbin/gosu
 
 # Lutim
-RUN mkdir -p $APP_HOME $APP_WORK \
-	&& curl -sSL "https://framagit.org/s7b4/lutim/repository/archive.tar.gz?ref=$APP_TAG" \
+RUN mkdir -vp $APP_HOME $APP_WORK \
+	&& curl -sSL "https://framagit.org/s7b4/lutim/repository/$APP_TAG/archive.tar.gz" \
 		| tar xz --strip-component=1 -C $APP_HOME \
 	&& cd $APP_HOME \
 	&& carton install \
