@@ -3,7 +3,7 @@ LABEL maintainer="s7b4 <baron.stephane@gmail.com>"
 
 ENV APP_USER=lutim \
 	APP_TAG=configurable-storage-path \
-	GOSU_VERSION=1.11
+	GOSU_VERSION=1.12
 
 ENV APP_HOME=/opt/$APP_USER \
 	APP_WORK=/home/$APP_USER
@@ -37,9 +37,9 @@ RUN apt-get update \
 RUN curl -o /usr/local/sbin/gosu -sSL "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
 	&& chmod +x /usr/local/sbin/gosu
 
-# Lutim
+
 RUN mkdir -vp $APP_HOME $APP_WORK \
-	&& curl -sSL "https://framagit.org/s7b4/lutim/repository/$APP_TAG/archive.tar.gz" \
+	&& curl -sSL "https://framagit.org/s7b4/lutim/-/archive/$APP_TAG/lutim-$APP_TAG.tar.gz" \
 		| tar xz --strip-component=1 -C $APP_HOME \
 	&& cd $APP_HOME \
 	&& carton install \
